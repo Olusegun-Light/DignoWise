@@ -1,6 +1,6 @@
-# DogWise: AI-Powered Symptom and Diagnosis Guidance
+# DigWise: AI-Powered Symptom and Diagnosis Guidance
 
-Welcome to **DogWise**, your intelligent companion for understanding your dog's health. DogWise employs cutting-edge AI technology to provide guidance on symptoms and potential diagnoses for your furry friend. Whether you're a concerned dog parent or a veterinarian seeking additional insights, DogWise is here to assist.
+Welcome to **DigWise**, your intelligent companion for understanding your dog's health. DigWise employs cutting-edge AI technology to provide guidance on symptoms and potential diagnoses for your furry friend. Whether you're a concerned dog parent or a veterinarian seeking additional insights, DigWise is here to assist.
 
 ## Table of Contents
 
@@ -18,13 +18,13 @@ Welcome to **DogWise**, your intelligent companion for understanding your dog's 
 
 ## Introduction
 
-DigWise is an AI-powered platform that leverages machine learning to analyze symptoms and provide guidance on potential health issues in dogs. This repository contains the backend code for the DogWise application, implemented using Node.js and Express.
+DigWise is an AI-powered platform that leverages machine learning to analyze symptoms and provide guidance on potential health issues in dogs. This repository contains the backend code for the DigWise application, implemented using Node.js and Express.
 
 ## Getting Started
 
 ### Prerequisites
 
-Before running DogWise, make sure you have the following installed:
+Before running DigWise, make sure you have the following installed:
 
 - [Node.js](https://nodejs.org/)
 - [MongoDB](https://www.mongodb.com/)
@@ -64,18 +64,356 @@ Before running DogWise, make sure you have the following installed:
    npm run build
    ```
 
-DignoWise should now be running on [http://localhost:3000](http://localhost:3000).
+DignoWise should now be running on [https://dognowise.onrender.com/](https://dognowise.onrender.com/).
 
 ## Usage
 
 ### API Endpoints
 
-DogWise exposes the following API endpoints:
+DigWise exposes the following API endpoints:
 
 - `/api/v1/users`: User-related operations
 - `/api/v1/meds`: Medical information submission
 
-For detailed information on each endpoint, refer to the [User Routes](#user-routes) and [Medical Routes](#medical-routes) sections.
+## User Routes
+
+### Sign Up
+
+- **Endpoint:** `/api/v1/users/signup`
+- **Method:** `POST`
+- **Description:** Create a new user account.
+- **Request Body:**
+
+  ```json
+  {
+    "name": "Your Name",
+    "email": "your.email@example.com",
+    "password": "yourpassword",
+    "passwordConfirm": "yourpasswordconfirmation"
+  }
+  ```
+
+- **Response:**
+
+  - Status Code: 201 (Created)
+  - JSON Response:
+
+  ```json
+  {
+    "status": "success",
+    "token": "yourjsonwebtoken",
+    "data": {
+      "user": {
+        "_id": "user id",
+        "name": "Your Name",
+        "photo": "default.jpg",
+        "email": "your.email@example.com",
+        "role": "user"
+      }
+    }
+  }
+  ```
+
+### Log In
+
+- **Endpoint:** `/api/v1/users/login`
+- **Method:** `POST`
+- **Description:** Log in with an existing user account.
+- **Request Body:**
+
+  ```json
+  {
+    "email": "your.email@example.com",
+    "password": "yourpassword"
+  }
+  ```
+
+- Response:
+
+  - Status Code: 200 (OK)
+  - JSON Response:
+
+    ```json
+    {
+      "status": "success",
+      "token": "yourjsonwebtoken",
+      "data": {
+        "user": {
+          "_id": "user id",
+          "name": "Your Name",
+          "email": "your.email@example.com",
+          "role": "user"
+        }
+      }
+    }
+    ```
+
+### Log Out
+
+- **Endpoint**: `/api/v1/users/logout`
+- **Method:** `GET`
+- **Description:** Log out the currently logged-in user.
+- **Response:**
+  - Status Code: 200 (OK)
+  - JSON Response:
+    ```json
+    {
+      "status": "success"
+    }
+    ```
+
+### Forgot Password
+
+- **Endpoint:** `/api/v1/users/forgotPassword`
+- **Method:** `POST`
+- **Description:** Request a password reset email.
+- **Request Body:**
+
+  ```json
+  {
+    "email": "your.email@example.com"
+  }
+  ```
+
+- **Response:**
+- **Status Code:** 200 (OK)
+- **JSON Response:**
+  ```json
+  {
+    "status": "success",
+    "message": "Token sent to email!"
+  }
+  ```
+
+### Reset Password
+
+- **Endpoint:** `/api/v1/users/resetPassword/:token`
+- **Method:** `PATCH`
+- **Description:** Reset the user's password with a valid reset token.
+- **Request Body:**
+
+  ```json
+  {
+    "password": "newpassword",
+    "passwordConfirm": "newpassword"
+  }
+  ```
+
+- **Response:**
+- **Status Code: 200 (OK)**
+- **JSON Response:**
+
+  ```json
+  {
+    "status": "success",
+    "token": "yourjsonwebtoken",
+    "data": {
+      "user": {
+        "password": "new password",
+        "passwordChangedAt": "Date"
+      }
+    }
+  }
+  ```
+
+### Update Password
+
+- **Endpoint:** `/api/v1/users/updateMyPassword`
+- **Method:** `PATCH`
+- **Description:** Update the currently logged-in user's password.
+- **Request Body:**
+
+  ```json
+  {
+    "passwordCurrent": "currentpassword",
+    "password": "newpassword",
+    "passwordConfirm": "newpassword"
+  }
+  ```
+
+- **Response:**
+
+  - Status Code: 200 (OK)
+  - JSON Response:
+
+    ```json
+    {
+      "status": "success",
+      "token": "yourjsonwebtoken",
+      "data": {
+        "user": {
+          // user data after password update
+        }
+      }
+    }
+    ```
+
+  ```
+
+  ```
+
+### Get Current User
+
+- **Endpoint:** `/api/v1/users/me`
+- **Method:** `GET`
+- **Description:** Get information about the currently logged-in user.
+- **Response:**
+  - Status Code: 200 (OK)
+  - JSON Response:
+    ```json
+    {
+      "status": "success",
+      "results": 1,
+      "data": {
+        "data": [
+          {
+            "_id": "656053593006ad07f6b764c0",
+            "name": "Light",
+            "email": "admin@gmail.com",
+            "photo": "default.jpg",
+            "role": "admin"
+          }
+        ]
+      }
+    }
+    ```
+
+### Update Current User
+
+- **Endpoint:** `/api/v1/users/updateMe`
+- **Method:** `PATCH`
+- **Description:** Update information about the currently logged-in user.
+- **Request Body:**
+- Can include fields like "name" and "email" for update.
+- **Response:**
+  - Status Code: 200 (OK)
+  - JSON Response:
+    ```json
+    {
+      "status": "success"
+    }
+    ```
+
+### Delete Current User
+
+- Endpoint: /api/v1/users/deleteMe
+- Method: DELETE
+- Description: Deactivate the currently logged-in user.
+- Response:
+  - Status Code: 204 (No Content)
+  - JSON Response: No content in response.
+
+### Get All Users (Admin Only)
+
+- **Endpoint:** `/api/v1/users`
+- **Method: **`GET`
+- **Description:** Get a list of all users. (Admin access required)
+- **Response:**
+  - Status Code: 200 (OK)
+  - JSON Response:
+    ```json
+    {
+      "status": "success",
+      "results": 2,
+      "data": {
+        "users": [
+          {
+            // user data
+          },
+          {
+            // user data
+          }
+        ]
+      }
+    }
+    ```
+
+### Get User by ID (Admin Only)
+
+- Endpoint: `/api/v1/users/:id`
+- Method: `GET`
+- Description: Get a user by their ID. (Admin access required)
+- Response:
+  - Status Code: 200 (OK)
+  - JSON Response:
+    ```json
+    {
+      "status": "success",
+      "data": {
+        "user": {
+          // user data
+        }
+      }
+    }
+    ```
+
+### Update User by ID (Admin Only)
+
+- Endpoint: `/api/v1/users/:id`
+- Method: `PATCH`
+- Description: Update a user by their ID. (Admin access required)
+- Request Body:
+  - Can include fields like "name" and "email" for update.
+- Response:
+
+  - Status Code: 200 (OK)
+  - JSON Response:
+
+  ```json
+  {
+    "status": "success",
+    "data": {
+      "user": {
+        // updated user data
+      }
+    }
+  }
+  ```
+
+### Delete User by ID (Admin Only)
+
+- Endpoint: `/api/v1/users/:id`
+- Method: `DELETE`
+- Description: Delete a user by their ID. (Admin access required)
+- Response:
+  - Status Code: 204 (No Content)
+  - JSON Response: No content in response.
+
+### Medical Information Submission Route
+
+**Submit Medical Information**
+
+- **Endpoint:** `/api/v1/medical-info/submit`
+- **Method:** `POST`
+- **Description:** Submit medical information.
+- **Request Body:**
+
+  ```json
+  {
+    "firstName": "Admin",
+    "lastName": "Auth",
+    "gender": "Male",
+    "dateOfBirth": "20004-05-12",
+    "bloodPressure": "Yes",
+    "allergies": "Yes, Lactose intolerant",
+    "smoker": "Yes"
+  }
+  ```
+
+- **Response:**
+
+  - Status Code: 201 (Created)
+  - JSON Response:
+    ```json
+    {
+      "status": "success",
+      "data": {
+        "medicalInfo": {
+          // submitted medical information
+        }
+      }
+    }
+    ```
 
 ### Authentication
 
@@ -93,7 +431,7 @@ The project follows a modular structure, with key components including:
 
 ## Dependencies
 
-DogWise relies on various Node.js packages, including but not limited to:
+DigWise relies on various Node.js packages, including but not limited to:
 
 - **Express**: Web application framework
 - **Mongoose**: MongoDB object modeling
