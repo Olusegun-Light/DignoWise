@@ -86,7 +86,6 @@ DigWise exposes the following API endpoints:
 
   ```json
   {
-    "name": "Your Name",
     "email": "your.email@example.com",
     "password": "yourpassword",
     "passwordConfirm": "yourpasswordconfirmation"
@@ -105,7 +104,6 @@ DigWise exposes the following API endpoints:
     "data": {
       "user": {
         "_id": "user id",
-        "name": "Your Name",
         "photo": "default.jpg",
         "email": "your.email@example.com",
         "role": "user"
