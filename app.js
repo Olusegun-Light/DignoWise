@@ -10,11 +10,6 @@ const cookieParser = require("cookie-parser");
 const compression = require("compression");
 const cors = require("cors");
 
-const dotenv = require("dotenv");
-const session = require("express-session");
-const passport = require("passport");
-const GoogleStrategy = require("passport-google-oauth20").Strategy;
-
 const AppError = require("./utils/appError");
 const globalErrorHandler = require("./controllers/errorController");
 const userRouter = require("./routes/userRoute");
