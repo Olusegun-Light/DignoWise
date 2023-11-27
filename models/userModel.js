@@ -3,9 +3,6 @@ const validator = require("validator");
 const bcrypt = require("bcryptjs");
 const crypto = require("crypto");
 
-const passportLocalMongoose = require("passport-local-mongoose");
-const findOrCreate = require("mongoose-findorcreate");
-
 userSchema = new mongoose.Schema({
   email: {
     type: String,
@@ -119,11 +116,6 @@ userSchema.methods.createPasswordResetToken = function () {
 userSchema.pre(/^find/, function (next) {
   // this pint to the current query
   this.find({ active: { $ne: false } });
-  next();
-});
-
-userSchema.pre("create", function (next) {
-  this.slug = slugify(this.name, { lower: true });
   next();
 });
 
