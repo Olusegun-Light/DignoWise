@@ -452,7 +452,7 @@ Check the `package.json` file for a complete list of dependencies.
 
 You can explore and test the API endpoints using the provided Postman collection. The collection includes all the defined API routes along with example requests and responses.
 
-[![Run in Postman](https://run.pstmn.io/button.svg)](https://solar-desert-414146.postman.co/workspace/New-Team-Workspace~1e7205c0-1eec-4682-9fdb-f83a4c40abe1/collection/20337559-ee7167db-117e-45fc-b012-2bfd5ec7e30d?action=share&creator=20337559)
+[![Run in Postman](https://run.pstmn.io/button.svg)](https://documenter.getpostman.com/view/20337559/2s9YeEcXuA)
 
 Click the "Run in Postman" button above to import the collection into your Postman workspace.
 
