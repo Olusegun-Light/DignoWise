@@ -1,6 +1,7 @@
-# DigWise: AI-Powered Symptom and Diagnosis Guidance
+# DignoWise: AI-Powered Symptom and Diagnosis Guidance
 
-Welcome to **DigWise**, your intelligent companion for understanding your dog's health. DigWise employs cutting-edge AI technology to provide guidance on symptoms and potential diagnoses for your furry friend. Whether you're a concerned dog parent or a veterinarian seeking additional insights, DigWise is here to assist.
+Welcome to **DignoWise**, your intelligent companion for understanding your health. DignoWise employs cutting-edge AI technology to provide guidance on symptoms and potential diagnoses. Whether you're a concerned individual seeking health advice or a healthcare professional looking for additional insights, DignoWise is here to assist.
+
 
 ## Table of Contents
 
@@ -18,13 +19,13 @@ Welcome to **DigWise**, your intelligent companion for understanding your dog's 
 
 ## Introduction
 
-DigWise is an AI-powered platform that leverages machine learning to analyze symptoms and provide guidance on potential health issues in dogs. This repository contains the backend code for the DigWise application, implemented using Node.js and Express.
+DignoWise is an AI-powered platform that leverages machine learning to analyze symptoms and provide guidance on potential health issues in individuals. This repository contains the backend code for the DignoWise application, implemented using Node.js and Express.
 
 ## Getting Started
 
 ### Prerequisites
 
-Before running DigWise, make sure you have the following installed:
+Before running DignoWise, make sure you have the following installed:
 
 - [Node.js](https://nodejs.org/)
 - [MongoDB](https://www.mongodb.com/)
@@ -63,14 +64,12 @@ Before running DigWise, make sure you have the following installed:
    ```bash
    npm run build
    ```
-
-DignoWise should now be running on [https://dognowise.onrender.com/](https://dognowise.onrender.com/).
-
+   
 ## Usage
 
 ### API Endpoints
 
-DigWise exposes the following API endpoints:
+DignoWise exposes the following API endpoints:
 
 - `/api/v1/users`: User-related operations
 - `/api/v1/meds`: Medical information submission
@@ -429,7 +428,7 @@ The project follows a modular structure, with key components including:
 
 ## Dependencies
 
-DigWise relies on various Node.js packages, including but not limited to:
+DignoWise relies on various Node.js packages, including but not limited to:
 
 - **Express**: Web application framework
 - **Mongoose**: MongoDB object modeling
@@ -448,3 +447,13 @@ DigWise relies on various Node.js packages, including but not limited to:
 - **Compression**: Response compression middleware
 
 Check the `package.json` file for a complete list of dependencies.
+
+## Postman Collection
+
+You can explore and test the API endpoints using the provided Postman collection. The collection includes all the defined API routes along with example requests and responses.
+
+[![Run in Postman](https://run.pstmn.io/button.svg)](https://solar-desert-414146.postman.co/workspace/New-Team-Workspace~1e7205c0-1eec-4682-9fdb-f83a4c40abe1/collection/20337559-ee7167db-117e-45fc-b012-2bfd5ec7e30d?action=share&creator=20337559)
+
+Click the "Run in Postman" button above to import the collection into your Postman workspace.
+
+Please note that you'll need to have Postman installed on your machine to use the collection effectively.
