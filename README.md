@@ -19,7 +19,7 @@ Welcome to **DignoWise**, your intelligent companion for understanding your heal
 
 ## Introduction
 
-DignoWise is an AI-powered platform that leverages machine learning to analyze symptoms and provide guidance on potential health issues in individuals. This repository contains the backend code for the DignoWise application, implemented using Node.js and Express.
+DignoWise is an AI-powered platform that leverages machine learning to analyze symptoms and provide guidance on potential health issues in individuals. This repository contains the backend code for the DignoWise application, implemented using Node.js and Express. The frontend repository is at [DignoWise Frontend](https://github.com/Deen-Abdultawab/DignoWise)
 
 ## Getting Started
 
